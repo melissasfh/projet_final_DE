@@ -5,4 +5,3 @@ scikit-learn-extra
 scikit-learn
 numpy
 nltk
-re
