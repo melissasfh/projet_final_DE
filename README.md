@@ -29,5 +29,5 @@ Pour ne pas charger les données à chaque instentiation, nous avons telechargé
 Afin que le code soit mis à jour, on peut monter un volume sur le repertoir /app du conteneur, celui-ci fait l'effet d'un miroir.
 docker run -v /chemin/local:/app -p 5000:5000 projet_de:v2
 
-
-
+# 8. Visualisations :
+Toutes les methodes de réductions contiennent toutes des visualisations : nuage de points et Elbow method dans leurs notebooks individuels respectifs.
