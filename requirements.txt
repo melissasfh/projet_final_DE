@@ -1,0 +1,8 @@
+pandas 
+sentence-transformers
+umap-learn
+scikit-learn-extra
+scikit-learn
+numpy
+nltk
+re
