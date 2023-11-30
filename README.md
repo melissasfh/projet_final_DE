@@ -22,6 +22,6 @@ Durant le processus de fusion, un conflit est survenu. Nous l'avons résolu en s
 # 5.Création du Container Docker
 Pour rendre notre projet accessible sur Docker Hub, nous avons créé deux fichiers : requirements.txt, qui contient toutes les bibliothèques nécessaires au fonctionnement de notre code, et un Dockerfile. Nous avons procédé au build de notre image, puis au run de notre projet, affichant ainsi les résultats des trois méthodes via des impressions (print).
 
-# 6. Sauvegarder les données pour ne pas les télécharger à chaque instantiation:
+# 6. Sauvegarder les données pour ne pas les télécharger à chaque instanciation:
 Pour ne pas charger les données à chaque instentiation, nous avons telechargé les données en format ('CSV') après l'etape de l'embedding, et nous avons mis à jour le code afin de charger les données en question directement en tant que dataframe. Cela dans le but de reduire la taille de notre image.
 
