@@ -25,3 +25,9 @@ Pour rendre notre projet accessible sur Docker Hub, nous avons créé deux fichi
 # 6. Sauvegarder les données pour ne pas les télécharger à chaque instanciation:
 Pour ne pas charger les données à chaque instentiation, nous avons telechargé les données en format ('CSV') après l'etape de l'embedding, et nous avons mis à jour le code afin de charger les données en question directement en tant que dataframe. Cela dans le but de reduire la taille de notre image.
 
+# 7. Monter un volume :
+Afin que le code soit mis à jour, on peut monter un volume sur le repertoir /app du conteneur, celui-ci fait l'effet d'un miroir.
+docker run -v /chemin/local:/app -p 5000:5000 projet_de:v2
+
+
+
