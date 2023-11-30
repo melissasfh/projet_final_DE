@@ -1,8 +1,6 @@
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.metrics.cluster import normalized_mutual_info_score, adjusted_rand_score
 from sentence_transformers import SentenceTransformer
-import numpy as np
-import pandas as pd
 import re
 import nltk
 nltk.download('punkt')
@@ -11,7 +9,6 @@ nltk.download('wordnet')
 nltk.download('omw-1.4')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
@@ -38,7 +35,22 @@ def dim_red(mat, p, method, labels):
         red_mat : NxP list such that p<<m
     '''
     if method=='ACP':
-        red_mat = 0
+          # Initialize PCA object
+        pca = PCA(n_components=20)
+
+        # Fit PCA on embeddings
+        pca.fit(mat)
+
+        # Apply dimensionality reduction
+        df_pca = pd.DataFrame(pca.transform(mat))
+
+        # Add label column to the new dataframe
+        df_pca['label'] = labels
+
+        # Rename columns
+        df_pca.columns = ['PCA'+str(i+1) for i in range(p)] + ['label']
+
+        red_mat = df_pca
 
     elif method=='UMAP':
             # Initialize UMAP object
@@ -131,7 +143,7 @@ embeddings = model.encode(df_corpus['preprocessed_text'])
 
 
 # Perform dimensionality reduction and clustering for each method
-methods = ['UMAP', 't-SNE']
+methods = ['UMAP', 't-SNE','ACP']
 for method in methods:
     # Perform dimensionality reduction
     red_emb = dim_red(embeddings, 20, method, df_labels)
